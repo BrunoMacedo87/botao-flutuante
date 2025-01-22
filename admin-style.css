@@ -1,0 +1,49 @@
+.floating-balloon-admin {
+    padding: 20px;
+}
+
+.floating-balloon-admin .form-group {
+    margin-bottom: 15px;
+}
+
+.floating-balloon-admin label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.floating-balloon-admin input[type="text"] {
+    width: 300px;
+}
+
+.balloon-item {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.balloon-item h4 {
+    margin-top: 0;
+}
+
+.remove-balloon {
+    color: #dc3232;
+    margin-top: 10px;
+}
+
+#add-balloon {
+    margin: 20px 0;
+}
+
+.image-url-input {
+    margin-right: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.phone-mask {
+    font-family: monospace;
+} 

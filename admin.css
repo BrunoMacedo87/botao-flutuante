@@ -1,0 +1,24 @@
+.balloon-item {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.balloon-item h3 {
+    margin-top: 0;
+}
+
+#add-balloon {
+    margin: 20px 0;
+}
+
+.remove-balloon {
+    color: #dc3232;
+    margin-top: 10px;
+}
+
+.upload-image {
+    margin-left: 10px !important;
+}

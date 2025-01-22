@@ -1,0 +1,229 @@
+#floating-balloons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.floating-balloon {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.floating-balloon:hover {
+    transform: scale(1.1);
+}
+
+.floating-balloon img {
+    max-width: 70%;
+    max-height: 70%;
+    width: auto;
+    height: auto;
+}
+
+.additional-balloons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.additional-balloons-container.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+.main-balloon {
+    position: relative;
+    z-index: 10000;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-balloon:hover {
+    transform: scale(1.1);
+}
+
+.main-balloon.active {
+    transform: rotate(180deg);
+}
+
+.additional-balloon {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.additional-balloon img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+}
+
+.additional-balloons-container.active .additional-balloon {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Adicionar delay para cada balão */
+.additional-balloon:nth-child(1) { transition-delay: 0.1s; }
+.additional-balloon:nth-child(2) { transition-delay: 0.2s; }
+.additional-balloon:nth-child(3) { transition-delay: 0.3s; }
+.additional-balloon:nth-child(4) { transition-delay: 0.4s; }
+.additional-balloon:nth-child(5) { transition-delay: 0.5s; }
+
+/* Estilos do Tooltip */
+.balloon-tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.balloon-tooltip::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent #333;
+}
+
+.balloon-tooltip.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Estilos da seta para cima */
+.scroll-to-top {
+    position: absolute;
+    bottom: calc(100% + 15px);
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    color: #333;
+}
+
+.scroll-to-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-3px);
+}
+
+.scroll-to-top svg {
+    width: 24px;
+    height: 24px;
+}
+
+.main-balloon-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.balloon-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+    width: auto;
+    height: auto;
+}
+
+.balloon-image.default {
+    opacity: 1;
+}
+
+.balloon-image.active {
+    opacity: 0;
+}
+
+.main-balloon.active .balloon-image.default {
+    opacity: 0;
+}
+
+.main-balloon.active .balloon-image.active {
+    opacity: 1;
+}
+
+/* Remover o seletor antigo de imagem */
+.floating-balloon img {
+    max-width: 70%;
+    max-height: 70%;
+    width: auto;
+    height: auto;
+}
+
+/* Adicione estas regras ao final do arquivo */
+
+/* Estilos específicos para quando localStorage não está disponível */
+#floating-balloons.no-storage .balloon-tooltip {
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#floating-balloons.no-storage .balloon-tooltip.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Garante que os balões sempre apareçam */
+#floating-balloons {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Força visibilidade dos balões adicionais quando abertos */
+#floating-balloons .additional-balloons-container.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: all !important;
+}
